@@ -2,16 +2,19 @@
 def main():
 	print ("Welcome to Caesar Shift\n")
 	print ("=======================\n")
-	print ("1. Encrypt\n2. Decrypt\n3.Read file")
+	print ("1. Encrypt\n2. Decrypt\n3. Read file")
 	option = int(input("Option: "))
 
-	message = input(str("Please enter a statement: "))
-	shift = int(input("Enter shift number: "))
+	if option != 3:
+		message = input(str("Please enter a statement: "))
+		shift = int(input("Enter shift number: "))
 
 	if option == 1:
 		encrypt(message, shift)
 	elif option == 2:
 		decrypt(message, shift)
+	elif option == 3:
+		fileRead()
 	else:
 		print("Error - Invalid Choice")
 		main()
@@ -48,7 +51,7 @@ def encrypt(message, shift):
 	filewrite(encrypted)
 
 def filewrite(encrypted):
-	file = open('messages.txt', 'w')
+	file = open('message.txt', 'w')
 	file.write(encrypted)
 	file.close()
 	print (f"The message {encrypted}, has been successfully written to {file.name}")
